@@ -1,19 +1,24 @@
 __author__ = 'claude'
 
-import math
 import hashlib
-from base64 import b64decode, b64encode
-#from Crypto.Hash import SHA1
-import libtorrent as lt
-import time
+from twisted.python import log
+import os
+
 
 class SHA1:
 
-    def calc_SHA1_value_base64(self, text):
+    def calcNodeID_Sha1(self, text):
+        cwdir = os.path.dirname(os.path.abspath(__file__))
+        log.startLogging(open(cwdir+"/file.log", 'w'))
+        log.msg("STARTING")
+        log.err("ERROR: Starting failed")
 
-        return hashlib.sha1(text).digest()
 
-    def calc_SHA1_value_hex(self, text):
-        return text
+        return hashlib.sha1(text).hexdigest()
+
+
+    def calcDistance(self, node_id_1, node_id_2):
+        log.msg("Calculating distance of two nodes")
+        return long(node_id_1.hexdigest(), 16) ^ long(node_id_2.hexdigest(), 16)
 
 
