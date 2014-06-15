@@ -7,9 +7,14 @@ import random
 
 class TestSaymeando(unittest.TestCase):
 
-    def test1(self):
-        node_id = "37aa63c77398d954473262e1a0057c1e632eda77"
-        text = "some text"
+    def test_sha1(self):
+        node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
+        text = "The quick brown fox jumps over the lazy dog"
+        self.assertEqual(node_id, sha1.SHA1().calcNodeID_Sha1(text))
+
+    def test_sha1_empty(self):
+        node_id = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        text = ""
         self.assertEqual(node_id, sha1.SHA1().calcNodeID_Sha1(text))
 
     def test_distance(self):
