@@ -3,6 +3,7 @@ __author__ = 'claude'
 import hashlib
 from twisted.python import log
 import os
+import bencode
 
 class SHA1:
 
