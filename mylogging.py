@@ -13,3 +13,7 @@ class Mylogging(log.LogPublisher):
 
     def start(self):
         log.startLogging(open(self.cwdir + "/file.log", 'w'))
+        log.msg("weird")
+
+    def mymsg(self, text):
+        log.msg(text)

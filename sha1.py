@@ -11,11 +11,14 @@ from mylogging import Mylogging
 class SHA1:
 
     def __init__(self):
-        self.logging = Mylogging()
+
         pass
 
     def calcNodeID_Sha1(self, text):
+        self.logging = Mylogging()
+        self.logging.start()
         self.logging.msg("STARTING")
+        self.logging.mymsg("HAHAHAHHAHAHAHAHAHA")
 
         self.logging.msg("RETURNING torrent SHA1 hash")
         return hashlib.sha1(text).hexdigest()

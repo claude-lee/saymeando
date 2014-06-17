@@ -16,11 +16,13 @@ class TestSaymeando(unittest.TestCase):
     node = peer.Peer()
 
     def test_sha1(self):
+        logging = sha1.SHA1()
         node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
         text = "The quick brown fox jumps over the lazy dog"
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
 
     def test_sha1_empty(self):
+        logging = sha1.SHA1()
         node_id = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
         text = ""
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
@@ -67,8 +69,8 @@ class TestSaymeando(unittest.TestCase):
         self.assertEqual(info_hash, self.node.get_NodeId())
 
     def test_logging(self):
-        logging = Mylogging()
-        logging.start()
+        pass
+        #logging = sha1.SHA1()
 
 
 if __name__ == "__main__":
