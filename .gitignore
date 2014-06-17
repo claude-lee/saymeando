@@ -45,3 +45,6 @@ docs/_build/
 
 # pyc files
 *.pyc
+
+# weird
+.DS_Store

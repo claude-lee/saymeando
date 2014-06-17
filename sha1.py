@@ -8,6 +8,9 @@ from kademlia.network import Server
 
 class SHA1:
 
+    def __init__(self):
+        pass
+
     def calcNodeID_Sha1(self, text):
         cwdir = os.path.dirname(os.path.abspath(__file__))
         log.startLogging(open(cwdir+"/file.log", 'w'))
