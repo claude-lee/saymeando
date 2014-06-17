@@ -9,6 +9,7 @@ import twisted
 # log to std out
 log.startLogging(sys.stdout)
 
+
 def quit(result):
     print "Key result:", result
     reactor.stop()
