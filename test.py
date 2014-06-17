@@ -7,6 +7,7 @@ import hashlib
 import random
 import os
 
+
 class TestSaymeando(unittest.TestCase):
 
     hash = sha1.SHA1()
