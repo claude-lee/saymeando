@@ -6,6 +6,7 @@ import os
 import bencode
 from kademlia.network import Server
 
+
 class SHA1:
 
     def __init__(self):
