@@ -5,20 +5,20 @@ from twisted.python import log
 import os
 import bencode
 from kademlia.network import Server
+from mylogging import Mylogging
 
 
 class SHA1:
 
     def __init__(self):
+        self.logging = Mylogging()
         pass
 
     def calcNodeID_Sha1(self, text):
-        cwdir = os.path.dirname(os.path.abspath(__file__))
-        log.startLogging(open(cwdir + "/file.log", 'w'))
-        log.msg("STARTING")
-        log.err("ERROR: Starting failed")
+        self.logging.msg("STARTING")
+        #self.logging.err("ERROR: Starting failed")
 
-        log.msg("RETURNING torrent SHA1 hash")
+        self.logging.msg("RETURNING torrent SHA1 hash")
         return hashlib.sha1(text).hexdigest()
 
     def calcDistance(self, node_id_1, node_id_2):

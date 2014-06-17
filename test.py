@@ -6,6 +6,7 @@ import peer
 import hashlib
 import random
 import os
+from mylogging import Mylogging
 
 
 class TestSaymeando(unittest.TestCase):
@@ -64,6 +65,11 @@ class TestSaymeando(unittest.TestCase):
         info_hash = 'd0d14c926e6e99761a2fdcff27b403d96376eff6'
         self.node.set_NodeId(info_hash)
         self.assertEqual(info_hash, self.node.get_NodeId())
+
+    def test_logging(self):
+        logging = Mylogging()
+        logging.start()
+
 
 
 if __name__ == "__main__":
