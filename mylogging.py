@@ -7,7 +7,6 @@ import os
 
 class Mylogging(log.LogPublisher):
 
-
     def __init__(self):
         log.LogPublisher.__init__(self)
         self.cwdir = os.path.dirname(os.path.abspath(__file__))

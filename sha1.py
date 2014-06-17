@@ -16,7 +16,6 @@ class SHA1:
 
     def calcNodeID_Sha1(self, text):
         self.logging.msg("STARTING")
-        #self.logging.err("ERROR: Starting failed")
 
         self.logging.msg("RETURNING torrent SHA1 hash")
         return hashlib.sha1(text).hexdigest()
