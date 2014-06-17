@@ -70,8 +70,6 @@ class TestSaymeando(unittest.TestCase):
 
     def test_logging(self):
         pass
-        #logging = sha1.SHA1()
-
 
 if __name__ == "__main__":
     unittest.main()
