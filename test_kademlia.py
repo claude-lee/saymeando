@@ -14,8 +14,10 @@ def quit(result):
     print "Key result:", result
     reactor.stop()
 
+
 def get(result, server):
     return server.get("a key").addCallback(quit)
+
 
 def done(found, server):
     log.msg("Found nodes: %s" % found)
