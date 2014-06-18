@@ -15,5 +15,7 @@ A bittorrent client in Python
 
 log.msg("This is important!", logLevel=logging.CRITICAL)
 log.msg("Don't mind", logLevel=logging.DEBUG)
+log.msg("This is just FYI", logLevel=logging.INFO)
+log.msg("This is a no no", logLevel=logging.ERROR)
 * 
 
