@@ -7,13 +7,11 @@ import os
 
 class Logging(log.LogPublisher):
 
-
     def __init__(self):
         log.LogPublisher.__init__(self)
         self.cwdir = os.path.dirname(os.path.abspath(__file__))
         log.startLogging(open(self.cwdir + "/file.log", 'w'))
         self.log_id = 0
-
 
     def msg(self, text):
         log.msg('[' + str(self.log_id) + '] ' + text)

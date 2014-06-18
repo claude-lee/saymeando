@@ -23,7 +23,7 @@ class TestSaymeando(unittest.TestCase):
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
 
     def test_sha1_empty(self):
-        self.log_id +=1
+        self.log_id += 1
         self.logging.setLogId(self.log_id)
         node_id = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
         text = ""
