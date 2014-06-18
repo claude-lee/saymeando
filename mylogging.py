@@ -5,15 +5,18 @@ from twisted.python import log
 import os
 
 
-class Mylogging(log.LogPublisher):
+class Logging(log.LogPublisher):
+
 
     def __init__(self):
         log.LogPublisher.__init__(self)
         self.cwdir = os.path.dirname(os.path.abspath(__file__))
-
-    def start(self):
         log.startLogging(open(self.cwdir + "/file.log", 'w'))
-        log.msg("weird")
+        self.log_id = 0
 
-    def mymsg(self, text):
-        log.msg(text)
+
+    def msg(self, text):
+        log.msg('[' + str(self.log_id) + '] ' + text)
+
+    def setLogId(self, log_id):
+        self.log_id = log_id
