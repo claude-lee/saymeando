@@ -13,3 +13,9 @@ A bittorrent client in Python
 * https://twistedmatrix.com/documents/12.0.0/core/howto/clients.html
 * 
 
+log.msg("This is important!", logLevel=logging.CRITICAL)
+log.msg("Don't mind", logLevel=logging.DEBUG)
+log.msg("This is just FYI", logLevel=logging.INFO)
+log.msg("This is a no no", logLevel=logging.ERROR)
+* 
+
