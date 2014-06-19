@@ -30,3 +30,6 @@ Next steps:
 - run code with flag -logLevel = log.DEBUG for instance
 - if DEBUG level, take the entire string, if ERROR level, take part 0 and 1 and if INFO only 0. Or something like that
 - locating peers in network
+- look into the commit with pep8, do you really need to commit twice?
+- remember to use present tense when commit changes
+- 
