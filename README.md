@@ -32,4 +32,5 @@ Next steps:
 - locating peers in network
 - look into the commit with pep8, do you really need to commit twice?
 - remember to use present tense when commit changes
-- 
+- get familiar with gitk
+- learn more about git, eg git commit --amend
