@@ -34,3 +34,4 @@ Next steps:
 - remember to use present tense when commit changes
 - get familiar with gitk
 - learn more about git, eg git commit --amend
+http://stackoverflow.com/questions/12011091/trying-to-implement-python-testsuite

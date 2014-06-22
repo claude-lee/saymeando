@@ -4,8 +4,8 @@ import os
 import hashlib
 import random
 
-class TestHelper():
 
+class TestHelper():
 
     def __init__(self):
         self.logId = 0
@@ -17,7 +17,6 @@ class TestHelper():
         self.rand_node_id_2 = hashlib.sha1(str(random.getrandbits(255)))
         self.info_hash = 'd0d14c926e6e99761a2fdcff27b403d96376eff6'
         self.magnet_link = 'magnet:?xt=urn:btih:d0d14c926e6e99761a2fdcff27b403d96376eff6'
-
 
     def getLogId(self):
         return self.logId
@@ -49,6 +48,3 @@ class TestHelper():
 
     def getMagnetLink(self):
         return self.magnet_link
-
-
-
