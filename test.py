@@ -7,84 +7,67 @@ import hashlib
 import random
 import os
 from mylogging import Logging
+import testHelper
+from kademlia.network import Server
 
 
 class TestSaymeando(unittest.TestCase):
 
+    helper = testHelper.TestHelper()
     logging = Logging()
     hash = sha1.SHA1(logging)
     node = peer.Peer()
-    log_id = 0
 
     def test_sha1(self):
-        self.logging.setLogId(self.log_id)
+        self.logging.setLogId(self.helper.getNewLogId())
         node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
         text = "The quick brown fox jumps over the lazy dog"
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
 
     def test_sha1_empty(self):
-        self.log_id += 1
-        self.logging.setLogId(self.log_id)
+        self.logging.setLogId(self.helper.getNewLogId())
         node_id = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
         text = ""
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
 
     def test_distance(self):
-        self.log_id += 1
-        self.logging.setLogId(self.log_id)
-        node_id_1 = hashlib.sha1(str(random.getrandbits(255)))
-        node_id_2 = hashlib.sha1(str(random.getrandbits(255)))
-        self.assertEqual(self.hash.calcDistance(node_id_2, node_id_1),
-                         self.hash.calcDistance(node_id_1, node_id_2))
+        self.logging.setLogId(self.helper.getNewLogId())
+        self.assertEqual(self.hash.calcDist(self.helper.getRandNodeId2(), self.helper.getRandNodeId1()),
+                         self.hash.calcDist(self.helper.getRandNodeId1(), self.helper.getRandNodeId2()))
 
     def test_gettingTorrent(self):
-        self.log_id += 1
-        self.logging.setLogId(self.log_id)
-        torrent_location = os.path.dirname(os.path.abspath(__file__)) + '/sample/sample.torrent'
-        torrent_content = 'd8:announce35:udp://tracker.openbittorrent.com:8013:creation datei1327049827e4:infod6:lengthi20e4:name10:sample.txt12:piece lengthi65536e6:pieces20:\\\xc5\xe6R\xbe\r\xe6\xf2x\x05\xb3\x04d\xff\x9b\x00\xf4\x89\xf0\xc97:privatei1eee'
-        self.assertEqual(torrent_content, self.hash.readTorrentFile(torrent_location))
-
-    def test_import_bencode(self):
-        pass
+        self.logging.setLogId(self.helper.getNewLogId())
+        self.assertEqual(self.helper.getTorrentContent(), self.hash.readTorrentFile(self.helper.getTorrentFile()))
 
     def test_metadata(self):
-        self.log_id += 1
-        self.logging.setLogId(self.log_id)
-        torrent_location = os.path.dirname(os.path.abspath(__file__)) + '/sample/sample.torrent'
-        torrent = self.hash.readTorrentFile(torrent_location)
-        meta_data = {'creation date': 1327049827, 'announce': 'udp://tracker.openbittorrent.com:80', 'info': {'length': 20, 'piece length': 65536, 'name': 'sample.txt', 'private': 1, 'pieces': '\\\xc5\xe6R\xbe\r\xe6\xf2x\x05\xb3\x04d\xff\x9b\x00\xf4\x89\xf0\xc9'}}
-        self.assertEqual(meta_data, self.hash.getMetaData(torrent))
+        self.logging.setLogId(self.helper.getNewLogId())
+        torrent = self.hash.readTorrentFile(self.helper.getTorrentFile())
+        self.assertEqual(self.helper.getMetaData(), self.hash.getMetaData(torrent))
 
     def test_createInfoHash(self):
-        self.log_id += 1
-        self.logging.setLogId(self.log_id)
-        torrent_location = os.path.dirname(os.path.abspath(__file__)) + '/sample/sample.torrent'
-        torrent = self.hash.readTorrentFile(torrent_location)
-        meta_data = self.hash.getMetaData(torrent)
-        info_hash = 'd0d14c926e6e99761a2fdcff27b403d96376eff6'
-        self.assertEqual(info_hash, self.hash.createInfoHashFrom(meta_data))
+        self.logging.setLogId(self.helper.getNewLogId())
+        self.assertEqual(self.helper.getInfoHash(), self.hash.createInfoHashFrom(self.helper.getMetaData()))
 
     def test_createMagnetLink(self):
-        info_hash = 'd0d14c926e6e99761a2fdcff27b403d96376eff6'
-        magnet_link = 'magnet:?xt=urn:btih:d0d14c926e6e99761a2fdcff27b403d96376eff6'
-        self.assertEqual(magnet_link, self.hash.createMagnetLinkFrom(info_hash))
+        self.logging.setLogId(self.helper.getNewLogId())
+        self.assertEqual(self.helper.getMagnetLink(), self.hash.createMagnetLinkFrom(self.helper.getInfoHash()))
 
     def test_createServer(self):
-        kademlia_server = str(self.hash.createServer())
-        pass
+        self.logging.setLogId(self.helper.getNewLogId())
+        kademlia_server = self.hash.createServer()
+        self.assertEqual(type(kademlia_server), Server)
 
     def test_setNodeId(self):
-        info_hash = 'd0d14c926e6e99761a2fdcff27b403d96376eff6'
-        self.node.set_NodeId(info_hash)
-        self.assertEqual(info_hash, self.node.get_NodeId())
-
-    def test_logging(self):
-        pass
+        self.logging.setLogId(self.helper.getNewLogId())
+        self.node.set_NodeId(self.helper.getInfoHash())
+        self.assertEqual(self.helper.getInfoHash(), self.node.get_NodeId())
 
     def test_gettingTorrent_error(self):
-        self.logging.setLogId(7)
-        torrent_location = os.path.dirname(os.path.abspath(__file__)) + '/does/not/exist'
-        self.assertEqual(None, self.hash.readTorrentFile(torrent_location))
+        self.logging.setLogId(self.helper.getNewLogId())
+        self.assertEqual(None, self.hash.readTorrentFile(self.helper.getNotExistingFile()))
+
 
 if __name__ == "__main__":
     unittest.main()
+
+

@@ -15,7 +15,7 @@ class SHA1:
         self.logging.msg("RETURNING torrent SHA1 hash")
         return hashlib.sha1(text).hexdigest()
 
-    def calcDistance(self, node_id_1, node_id_2):
+    def calcDist(self, node_id_1, node_id_2):
         self.logging.msg("RETURNING peer distance")
         return long(node_id_1.hexdigest(), 16) ^ long(node_id_2.hexdigest(), 16)
 

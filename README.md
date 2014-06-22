@@ -22,7 +22,7 @@ log.msg("This is a no no", logLevel=logging.ERROR)
 
 Next steps:
 - having a TestHelper class to store all testdata, or have helper functions, or make stuff global
-- modify test_createServer to test that the server is actually a kademlia server type
+- modify test_createServer to test that the server is actually a kademlia server type [done]
 - write tests to read and analyse log file
 - look into twisted logging create my own Logpublisher and set it in twisted.log module?
 - Have a 3pp folder and store all 3pp files there
