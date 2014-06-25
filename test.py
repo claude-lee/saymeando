@@ -69,7 +69,6 @@ class TestSaymeando(unittest.TestCase):
 
 if __name__ == "__main__":
     test_suite = unittest.TestSuite()
-
     test_suite.addTest(unittest.makeSuite(TestSaymeando))
     runner = list(unittest.TextTestRunner())
     for run in runner:
