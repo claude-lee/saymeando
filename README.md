@@ -34,4 +34,6 @@ Next steps:
 - remember to use present tense when commit changes
 - get familiar with gitk
 - learn more about git, eg git commit --amend
+- handle 3pp stuff, like bencode
 http://stackoverflow.com/questions/12011091/trying-to-implement-python-testsuite
+http://stackoverflow.com/questions/15971735/running-single-test-from-unittest-testcase-via-command-line
