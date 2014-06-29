@@ -3,27 +3,26 @@ __author__ = 'claude'
 import unittest
 import sha1
 import peer
-from log import Logging
-from log import log_dec
-from log import dec_all
 import testHelper
 from kademlia.network import Server
+from log import LogMsg
 
 
 class TestSaymeando(unittest.TestCase):
 
     th = testHelper.TestHelper()
-    logging = Logging()
-    hash = sha1.SHA1(logging)
+    hash = sha1.SHA1()
     node = peer.Peer()
 
     def setUp(self):
-        self.logging.setLogId(self.th.getNewLogId())
+        self.hash.logging.setLogId(self.th.getNewLogId())
+        self.hash.logging.separator()
 
     def test_sha1(self):
         node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
         text = "The quick brown fox jumps over the lazy dog"
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
+        self.hash.logging.check(self, ('INFO', LogMsg.RETURNING_SHA1_HASH))
 
     def test_sha1_empty(self):
         node_id = "da39a3ee5e6b4b0d3255bfef95601890afd80709"

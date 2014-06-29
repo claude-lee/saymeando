@@ -3,15 +3,17 @@ __author__ = 'claude'
 import hashlib
 import bencode
 from kademlia.network import Server
+from log import Logging
+from log import LogMsg
 
 
 class SHA1:
 
-    def __init__(self, logging):
-        self.logging = logging
+    def __init__(self):
+        self.logging = Logging()
 
     def calcNodeID_Sha1(self, text):
-        self.logging.msg("RETURNING torrent SHA1 hash")
+        self.logging.msg(LogMsg.RETURNING_SHA1_HASH)
         return hashlib.sha1(text).hexdigest()
 
     def calcDist(self, node_id_1, node_id_2):
