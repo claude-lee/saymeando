@@ -3,7 +3,7 @@ __author__ = 'claude'
 import hashlib
 import bencode
 from kademlia.network import Server
-from mylogging import Logging
+from log import Logging
 
 
 class SHA1:

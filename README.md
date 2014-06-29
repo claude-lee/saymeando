@@ -35,3 +35,4 @@ Next steps:
 - get familiar with gitk
 - learn more about git, eg git commit --amend
 http://stackoverflow.com/questions/12011091/trying-to-implement-python-testsuite
+http://stackoverflow.com/questions/3347019/how-can-one-use-the-logging-module-in-python-with-the-unittest-module?rq=1
