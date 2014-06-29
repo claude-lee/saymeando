@@ -9,14 +9,12 @@ import testHelper
 from kademlia.network import Server
 
 
-
 class TestSaymeando(unittest.TestCase):
 
     helper = testHelper.TestHelper()
     logging = Logging()
     hash = sha1.SHA1(logging)
     node = peer.Peer()
-
 
     @log.log_dec
     def test_sha1(self):
@@ -67,8 +65,5 @@ class TestSaymeando(unittest.TestCase):
         self.assertEqual(None, self.hash.readTorrentFile(self.helper.getNotExistingFile()))
 
 
-
 if __name__ == "__main__":
     unittest.main()
-
-

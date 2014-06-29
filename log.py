@@ -11,6 +11,7 @@ def log_dec(func):
         return func(self)
     return decorator
 
+
 class Logging(log.LogPublisher):
 
     def __init__(self):

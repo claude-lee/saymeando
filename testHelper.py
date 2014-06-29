@@ -5,8 +5,6 @@ import hashlib
 import random
 
 
-
-
 class TestHelper():
 
     def __init__(self):
