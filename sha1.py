@@ -3,7 +3,6 @@ __author__ = 'claude'
 import hashlib
 import bencode
 from kademlia.network import Server
-from log import Logging
 
 
 class SHA1:
@@ -19,7 +18,7 @@ class SHA1:
         self.logging.msg("RETURNING peer distance")
         return long(node_id_1.hexdigest(), 16) ^ long(node_id_2.hexdigest(), 16)
 
-    def readTorrentFile(self, torrent_location):
+    def readTor(self, torrent_location):
         read_file = None
         try:
             read_file = open(torrent_location, 'r').read()
@@ -28,16 +27,16 @@ class SHA1:
             self.logging.msg("ERROR: torrent file doesn't exist. " + str(e))
         return read_file
 
-    def getMetaData(self, torrent):
+    def getMetaD(self, torrent):
         self.logging.msg("CREATING metadata from torrent")
         return bencode.bdecode(torrent)
 
-    def createInfoHashFrom(self, meta_data):
+    def createIHFrom(self, meta_data):
         hash_contents = bencode.bencode(meta_data['info'])
         self.logging.msg("CREATING info hash from meta data")
         return self.calcNodeID_Sha1(hash_contents)
 
-    def createMagnetLinkFrom(self, info_hash):
+    def createMLFrom(self, info_hash):
         self.logging.msg("CREATING magnet link from info hash")
         return 'magnet:?xt=urn:btih:' + info_hash
 

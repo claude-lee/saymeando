@@ -25,26 +25,26 @@ class TestHelper():
         self.logId += 1
         return self.logId
 
-    def getNotExistingFile(self):
+    def getNonExFile(self):
         return self.not_existing_file
 
-    def getTorrentFile(self):
+    def getTor(self):
         return self.torrent_file
 
-    def getTorrentContent(self):
+    def getTorCont(self):
         return self.torrent_content
 
-    def getMetaData(self):
+    def getMetaD(self):
         return self.meta_data
 
-    def getRandNodeId1(self):
+    def getId1(self):
         return self.rand_node_id_1
 
-    def getRandNodeId2(self):
+    def getId2(self):
         return self.rand_node_id_2
 
-    def getInfoHash(self):
+    def getIH(self):
         return self.info_hash
 
-    def getMagnetLink(self):
+    def getML(self):
         return self.magnet_link
