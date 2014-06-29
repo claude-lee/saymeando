@@ -10,13 +10,15 @@ import testHelper
 from kademlia.network import Server
 
 
-@dec_all(log_dec)
 class TestSaymeando(unittest.TestCase):
 
     th = testHelper.TestHelper()
     logging = Logging()
     hash = sha1.SHA1(logging)
     node = peer.Peer()
+
+    def setUp(self):
+        self.logging.setLogId(self.th.getNewLogId())
 
     def test_sha1(self):
         node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
@@ -57,6 +59,3 @@ class TestSaymeando(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-
