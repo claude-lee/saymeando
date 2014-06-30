@@ -6,17 +6,16 @@ import peer
 import testHelper
 from kademlia.network import Server
 from log import LogMsg
+from log import log_dec
+from log import dec_all
 
 
+@dec_all(log_dec)
 class TestSaymeando(unittest.TestCase):
 
     th = testHelper.TestHelper()
     hash = sha1.SHA1()
     node = peer.Peer()
-
-    def setUp(self):
-        self.hash.logging.setLogId(self.th.getNewLogId())
-        self.hash.logging.separator()
 
     def test_sha1(self):
         node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
@@ -49,8 +48,8 @@ class TestSaymeando(unittest.TestCase):
         self.assertEqual(type(self.hash.createServer()), Server)
 
     def test_setNodeId(self):
-        self.node.set_NodeId(self.th.getIH())
-        self.assertEqual(self.th.getIH(), self.node.get_NodeId())
+        self.node.setNodeId(self.th.getIH())
+        self.assertEqual(self.th.getIH(), self.node.getNodeId())
 
     def test_gettingTorrent_error(self):
         self.assertEqual(None, self.hash.readTor(self.th.getNonExFile()))
