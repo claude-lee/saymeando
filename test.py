@@ -25,8 +25,12 @@ class TestSaymeando(unittest.TestCase):
     def test_1_logging_in_file(self):
         text = "The quick brown fox jumps over the lazy dog"
         self.hash.calcNodeID_Sha1(text)
-        # open logfile
-        # read logging
+        log_file = open(self.hash.logging.cwdir + "/" + self.hash.logging.log_file)
+        log_file.readline()  # 2014-07-17 12:27:41+0200 [-] Log opened.
+        log_file.readline()  #
+        log_file.readline()  # #--test_1_logging_in_file------------------#
+        line = log_file.readline()[0:-1]
+        self.assertEqual(line[-len(LogMsg.RETURNING_SHA1_HASH):], LogMsg.RETURNING_SHA1_HASH)
 
     def test_sha1_calculation_is_logged(self):
         text = "The quick brown fox jumps over the lazy dog"

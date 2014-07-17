@@ -34,7 +34,8 @@ class Logging(log.LogPublisher):
         log.LogPublisher.__init__(self)
         self.log_id = 0
         self.cwdir = os.path.dirname(os.path.abspath(__file__))
-        log.startLogging(open(self.cwdir + "/saymeando.log", 'w'))
+        self.log_file = "saymeando.log"
+        log.startLogging(open(self.cwdir + "/" + self.log_file, 'w'))
         self.cached_msg = ()
 
     def msg(self, text):
