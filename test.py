@@ -21,10 +21,14 @@ class TestSaymeando(unittest.TestCase):
         node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
         text = "The quick brown fox jumps over the lazy dog"
         self.assertEqual(node_id, self.hash.calcNodeID_Sha1(text))
-        self.hash.logging.check(self, ('INFO', LogMsg.RETURNING_SHA1_HASH))
+
+    def test_1_logging_in_file(self):
+        text = "The quick brown fox jumps over the lazy dog"
+        self.hash.calcNodeID_Sha1(text)
+        # open logfile
+        # read logging
 
     def test_sha1_calculation_is_logged(self):
-        node_id = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12"
         text = "The quick brown fox jumps over the lazy dog"
         self.hash.calcNodeID_Sha1(text)
         self.hash.logging.check(self, ('INFO', LogMsg.RETURNING_SHA1_HASH))

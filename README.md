@@ -61,4 +61,4 @@ log.section("retrieval")
 retrieval >> 2014-07-11 09:35:53+0200 [-] #--test_gettingTorrent---------------------#
 retrieval >> 2014-07-11 09:35:53+0200 [-] [5] OPENING torrent file
 
-
+- move decorator to testhelper
