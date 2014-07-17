@@ -38,3 +38,27 @@ Next steps:
 http://stackoverflow.com/questions/12011091/trying-to-implement-python-testsuite
 http://stackoverflow.com/questions/3347019/how-can-one-use-the-logging-module-in-python-with-the-unittest-module?rq=1
 http://stackoverflow.com/questions/15971735/running-single-test-from-unittest-testcase-via-command-line
+
+
+
+
+next steps:
+- have sections for log chapters, product shouldn't know about test, not even logging
+- try coverage
+- it is probably ok to test the cached log, only have one test to verify that the cached version will be in the file
+- don't test logging in same test, but have the same 'flow' in a separate test to test the logging
+- yes, have constants for logging messages
+
+
+log.section("discovery")
+
+discovery >> 2014-07-11 09:35:53+0200 [-] #--test_gettingTorrent---------------------#
+discovery >> 2014-07-11 09:35:53+0200 [-] [5] OPENING torrent file
+
+log.section("retrieval")
+
+
+retrieval >> 2014-07-11 09:35:53+0200 [-] #--test_gettingTorrent---------------------#
+retrieval >> 2014-07-11 09:35:53+0200 [-] [5] OPENING torrent file
+
+

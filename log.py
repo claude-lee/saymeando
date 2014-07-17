@@ -43,7 +43,7 @@ class Logging(log.LogPublisher):
 
     def separator(self, tc_name):
         log.msg("")
-        log.msg("#--" + tc_name + "---------------------#")
+        log.msg("#--" + tc_name + "------------------#")
 
     def setLogId(self, log_id):
         self.log_id = log_id
