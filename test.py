@@ -6,8 +6,8 @@ import peer
 import testHelper
 from kademlia.network import Server
 from log import LogMsg
-from log import log_dec
-from log import dec_all
+from testHelper import log_dec
+from testHelper import dec_all
 
 
 @dec_all(log_dec)

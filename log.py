@@ -3,29 +3,18 @@ __author__ = 'claude'
 from twisted.python import log
 import os
 from unittest import TestCase
-import inspect
-
-
-def log_dec(func, tc_name):
-    def decorator(self):
-        self.hash.logging.separator(tc_name)
-        self.hash.logging.setLogId(self.th.getNewLogId())
-        return func(self)
-    return decorator
-
-
-def dec_all(decorator, prefix='test'):
-    def dec_class(tc_class):
-        for name, m in inspect.getmembers(tc_class, inspect.ismethod):
-            if name.startswith(prefix):
-                setattr(tc_class, name, decorator(m, name))
-        return tc_class
-    return dec_class
 
 
 class LogMsg():
 
     RETURNING_SHA1_HASH = "RETURNING torrent SHA1 hash"
+    RETURNING_PEER_DISTANCE = "RETURNING peer distance"
+    OPENING_TORRENT_FILE = "OPENING torrent file"
+    CREATING_META_DATA_FROM_TORRENT = "CREATING metadata from torrent"
+    CREATING_INFO_HASH_FROM_META_DATA = "CREATING info hash from meta data"
+    CREATING_MAGNET_LINK_FROM_INFO_HASH = "CREATING magnet link from info hash"
+    CREATING_KADEMLIA_SERVER = "CREATING kademlia server"
+    ERROR_TORRENT_FILE_DOESNT_EXIST = "ERROR: torrent file doesn't exist. "
 
 
 class Logging(log.LogPublisher):
@@ -42,9 +31,9 @@ class Logging(log.LogPublisher):
         log.msg('[' + str(self.log_id) + '] ' + text)
         self.cached_msg = (self.log_id, text)
 
-    def separator(self, tc_name):
+    def separator(self, text):
         log.msg("")
-        log.msg("#--" + tc_name + "------------------#")
+        log.msg("--" + text + "------------------")
 
     def setLogId(self, log_id):
         self.log_id = log_id

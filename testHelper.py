@@ -3,6 +3,24 @@ __author__ = 'claude'
 import os
 import hashlib
 import random
+import inspect
+
+
+def log_dec(func, tc_name):
+    def decorator(self):
+        self.hash.logging.separator(tc_name)
+        self.hash.logging.setLogId(self.th.getNewLogId())
+        return func(self)
+    return decorator
+
+
+def dec_all(decorator, prefix='test'):
+    def dec_class(tc_class):
+        for name, m in inspect.getmembers(tc_class, inspect.ismethod):
+            if name.startswith(prefix):
+                setattr(tc_class, name, decorator(m, name))
+        return tc_class
+    return dec_class
 
 
 class TestHelper():
