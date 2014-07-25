@@ -2,7 +2,6 @@ __author__ = 'claude'
 
 from twisted.python import log
 import os
-from unittest import TestCase
 
 
 class LogMsg():
@@ -25,11 +24,15 @@ class Logging(log.LogPublisher):
         self.cwdir = os.path.dirname(os.path.abspath(__file__))
         self.log_file = "saymeando.log"
         log.startLogging(open(self.cwdir + "/" + self.log_file, 'w'))
-        self.cached_msg = ()
+        self.cached_msg = [0]
+        self.section = ''
 
     def msg(self, text):
-        log.msg('[' + str(self.log_id) + '] ' + text)
-        self.cached_msg = (self.log_id, text)
+        log.msg(self.section + ' >> [' + str(self.log_id) + '] ' + text)
+        if self.cached_msg[0] is not self.log_id:
+            self.cached_msg = [self.log_id, text]
+        else:
+            self.cached_msg.append(text)
 
     def separator(self, text):
         log.msg("")
@@ -38,6 +41,8 @@ class Logging(log.LogPublisher):
     def setLogId(self, log_id):
         self.log_id = log_id
 
-    def check(self, tc, exp_log):
-        exp_level, exp_msg = exp_log
-        TestCase.assertEqual(tc, exp_msg, self.cached_msg[1])
+    def getCachedMsg(self):
+        return self.cached_msg
+
+    def setSection(self, sec):
+        self.section = sec

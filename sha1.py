@@ -13,6 +13,7 @@ class SHA1:
         self.logging = Logging()
 
     def calcNodeID_Sha1(self, text):
+        self.logging.setSection('discovery')
         self.logging.msg(LogMsg.RETURNING_SHA1_HASH)
         return hashlib.sha1(text).hexdigest()
 
@@ -39,6 +40,7 @@ class SHA1:
         return self.calcNodeID_Sha1(hash_contents)
 
     def createMLFrom(self, info_hash):
+        self.logging.setSection('calculation')
         self.logging.msg(LogMsg.CREATING_MAGNET_LINK_FROM_INFO_HASH)
         return 'magnet:?xt=urn:btih:' + info_hash
 

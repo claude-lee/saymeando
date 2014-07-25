@@ -4,6 +4,7 @@ import os
 import hashlib
 import random
 import inspect
+from unittest import TestCase
 
 
 def log_dec(func, tc_name):
@@ -66,3 +67,11 @@ class TestHelper():
 
     def getML(self):
         return self.magnet_link
+
+    def check(self, tc, exp_log, cachedMsg):
+        exp_level, exp_msgs = exp_log
+        act_msgs = cachedMsg[1:]
+        if exp_level is 'INFO':
+            TestCase.assertEqual(tc, exp_msgs, act_msgs)
+        if exp_level is 'ERROR':
+            pass  #
