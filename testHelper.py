@@ -3,6 +3,25 @@ __author__ = 'claude'
 import os
 import hashlib
 import random
+import inspect
+from unittest import TestCase
+
+
+def log_dec(func, tc_name):
+    def decorator(self):
+        self.hash.logging.separator(tc_name)
+        self.hash.logging.setLogId(self.th.getNewLogId())
+        return func(self)
+    return decorator
+
+
+def dec_all(decorator, prefix='test'):
+    def dec_class(tc_class):
+        for name, m in inspect.getmembers(tc_class, inspect.ismethod):
+            if name.startswith(prefix):
+                setattr(tc_class, name, decorator(m, name))
+        return tc_class
+    return dec_class
 
 
 class TestHelper():
@@ -25,26 +44,34 @@ class TestHelper():
         self.logId += 1
         return self.logId
 
-    def getNotExistingFile(self):
+    def getNonExFile(self):
         return self.not_existing_file
 
-    def getTorrentFile(self):
+    def getTor(self):
         return self.torrent_file
 
-    def getTorrentContent(self):
+    def getTorCont(self):
         return self.torrent_content
 
-    def getMetaData(self):
+    def getMetaD(self):
         return self.meta_data
 
-    def getRandNodeId1(self):
+    def getId1(self):
         return self.rand_node_id_1
 
-    def getRandNodeId2(self):
+    def getId2(self):
         return self.rand_node_id_2
 
-    def getInfoHash(self):
+    def getIH(self):
         return self.info_hash
 
-    def getMagnetLink(self):
+    def getML(self):
         return self.magnet_link
+
+    def check(self, tc, exp_log, cachedMsg):
+        exp_level, exp_msgs = exp_log
+        act_msgs = cachedMsg[1:]
+        if exp_level is 'INFO':
+            TestCase.assertEqual(tc, exp_msgs, act_msgs)
+        if exp_level is 'ERROR':
+            pass  #
