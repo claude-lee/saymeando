@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 setup(
     name = "bencode",
     version = "1.0",
-    packages = find_packages(),
+    packages = ['', 'test'],
 
     # metadata for upload to PyPI
     author = "Thomas Rampelberg",

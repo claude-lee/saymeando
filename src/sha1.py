@@ -1,7 +1,7 @@
 __author__ = 'claude'
 
 import hashlib
-import bencode
+from 3pp import bencode
 from kademlia.network import Server
 from log import Logging
 from log import LogMsg

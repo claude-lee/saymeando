@@ -10,3 +10,4 @@ A bittorrent client in Python
 * bash script
 
 * get the todo from latest README
+https://pypi.python.org/pypi/python_boilerplate_template
