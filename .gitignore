@@ -50,3 +50,6 @@ docs/_build/
 .DS_Store
 
 \#README.md#
+
+# tmp vi files
+*.swp
