@@ -2,7 +2,8 @@ __author__ = 'claude'
 
 import hashlib
 from smd_btorrent import bencode
-from kademlia.network import Server
+from smd_btorrent import kademlia
+from smd_btorrent.kademlia.kademlia.network import Server
 from log import Logging
 from log import LogMsg
 
