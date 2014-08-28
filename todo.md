@@ -3,6 +3,16 @@ saymeando
 
 A bittorrent client in Python
 
+*** at work:
+export PYTHONPATH=$PYTHONPATH:/usr/lib64/python2.6/site-packages
+export PYTHONPATH=$PYTHONPATH:/home/eclaeis/stuff/github/saymeando/smd_btorrent
+
+http://stackoverflow.com/questions/14358162/funnelweb-error-cannot-import-ordereddict
+  File "/home/eclaeis/stuff/github/saymeando/smd_btorrent/kademlia/routing.py", line 4, in <module>
+    from collections import OrderedDict
+ImportError: cannot import name OrderedDict
+
+
 
 * order of testcases
 * constants for logging messages
