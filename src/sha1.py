@@ -3,7 +3,7 @@ __author__ = 'claude'
 import hashlib
 from smd_btorrent import bencode
 from smd_btorrent import kademlia
-from smd_btorrent.kademlia.kademlia.network import Server
+#from smd_btorrent.kademlia.network import Server
 from log import Logging
 from log import LogMsg
 
@@ -47,5 +47,5 @@ class SHA1:
 
     def createServer(self):
         self.logging.msg(LogMsg.CREATING_KADEMLIA_SERVER)
-        kademlia_server = Server()
+        kademlia_server = kademlia.network.Server()
         return kademlia_server

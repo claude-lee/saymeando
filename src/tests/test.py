@@ -2,9 +2,9 @@ __author__ = 'claude'
 
 import unittest
 from src import sha1
-import peer
-import testHelper
-from kademlia.network import Server
+from src import peer
+from src.tests import testHelper
+from smd_btorrent.kademlia.network import Server
 from log import LogMsg
 from testHelper import log_dec
 from testHelper import dec_all
