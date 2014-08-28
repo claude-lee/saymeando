@@ -1,7 +1,7 @@
 __author__ = 'claude'
 
 import unittest
-import sha1
+from src import sha1
 import peer
 import testHelper
 from kademlia.network import Server
